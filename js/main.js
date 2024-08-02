@@ -1,5 +1,3 @@
-
-
 const nombre = prompt("Ingresá tu nombre");
 const apellido = prompt("Ingresá tu apellido");
 
