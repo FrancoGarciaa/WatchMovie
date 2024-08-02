@@ -103,7 +103,7 @@ pelicula = parseInt(prompt("Marca la opcion\n\n1. Cartelera\n2. Mostrar pelicula
                                             default:
                                                 alert("opcion invalida. Ingresa una opcion valida")
                                             break;
-                                            }z  
+                                            }  
                                         }
                                     while (Pregunta1 !==0, Pregunta2 !==0, Pregunta3 !==0);
                                 break;
