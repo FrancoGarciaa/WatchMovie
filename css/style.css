@@ -1,5 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
-    background: rgb(255, 255, 255);
+    background: linear-gradient(rgb(49, 48, 48), rgb(51, 48, 48));
+    background-size: cover;
+    background-position: center; 
+    height: 100vh;
 }
 header h1{
     color: rgb(0, 0, 0);
