@@ -95,11 +95,7 @@ pelicula = parseInt(prompt("Marca la opcion\n\n1. Cartelera\n2. Mostrar pelicula
                                                 terceraSugerencia.forEach((peliculasanimadas) => alert(persona1.nombre + " " + persona1.apellido + " " + "te recomendamos:" + " -" + peliculasanimadas));
                                             break;
                                             case 2:
-                                                if (2) {
-                                                    return(pelicula)
-                                                } else {
-                                                }
-                                                /*alert("Este cine no es para ti, Bye <3!")*/
+                                                alert("Perdon no tenemos lo que buscas. :(")
                                             break;
                                             case 0:
                                                 alert("Volviste atras");
@@ -107,7 +103,7 @@ pelicula = parseInt(prompt("Marca la opcion\n\n1. Cartelera\n2. Mostrar pelicula
                                             default:
                                                 alert("opcion invalida. Ingresa una opcion valida")
                                             break;
-                                            }
+                                            }z  
                                         }
                                     while (Pregunta1 !==0, Pregunta2 !==0, Pregunta3 !==0);
                                 break;
