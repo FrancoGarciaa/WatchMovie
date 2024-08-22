@@ -88,8 +88,8 @@ h1 {
     pointer-events: none;
 }
 
-.bodyusuario input:focus~label,
-.bodyusuario input:valid~label{
+.bodyusuario input:focus ~ label,
+.bodyusuario input:valid ~ label{
     top: -14px;
     font-size: 12px;
     color: #222324;
@@ -127,11 +127,8 @@ h1 {
 .bodyusuario button{
     font-family: 'roboto';
     background: #454957;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #593a5c, #482950);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #76587a, #8c919e);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border: none;
     display: block;
     width: 80%;
@@ -151,3 +148,6 @@ h1 {
     width: 100px;
     height: 100px;
 } */
+
+/* PRIMER HTML (INGRESAR) = entrada ************************************************************************************* */
+

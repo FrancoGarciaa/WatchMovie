@@ -27,9 +27,9 @@ form.addEventListener("submit", e=>{
     }
 })
 
-if(nick, email, nombre == true){
-    location.href= "index.html"
-}
+// if(nick, email, nombre == true){
+//     location.href= "index.html"
+// }
 
 // const nombre = prompt("Ingresá tu nombre");
 // const apellido = prompt("Ingresá tu apellido");
