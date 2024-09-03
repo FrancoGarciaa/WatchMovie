@@ -1,315 +1,126 @@
-// const nombre = document.getElementById("name")
-// const email = document.getElementById("email")
-// const nick = document.getElementById("nickname")
-// const form = document.getElementById("form")
-// const parrafo =  document.getElementById("warnings")
+let productos = [];
 
-// form.addEventListener("submit", e=>{
-//     e.preventDefault()
-//     let warnings = ""
-//     let entrar = false
-//     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-//     parrafo.innerHTML = ""
-//     if(nombre.value.length <6){
-//         warnings += `el nombre no es valido <br>`
-//         entrar = true
-//     }
-//     if(!regexEmail.test(email.value))
-//         warnings += `el email no es valido <br>`
-//         entrar = true
-//     if(nick.value.length < 4){
-//         warnings += `el nick no es valido <br>`
-//         entrar = true
-//     }
-
-//     if(entrar){
-//         parrafo.innerHTML = warnings
-//     }
-// })
-
-const nombre2 = prompt("Ingresá tu nombre");
-const apellido = prompt("Ingresá tu apellido");
+fetch("./js/peliculas.json")
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        cargarProductos(productos);
+    })
 
 
-const persona1 = {
-    nombre: nombre2,
-    apellido: apellido,
+const contenedorProductos = document.querySelector("#contenedor-productos");
+const botonesCategorias = document.querySelectorAll(".boton-categoria");
+const tituloPrincipal = document.querySelector("#titulo-principal");
+let botonesAgregar = document.querySelectorAll(".producto-agregar");
+const numerito = document.querySelector("#numerito");
+
+
+botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
+    aside.classList.remove("aside-visible");
+}))
+
+
+function cargarProductos(productosElegidos) {
+
+    contenedorProductos.innerHTML = "";
+
+    productosElegidos.forEach(producto => {
+
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+            <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+            <div class="producto-detalles">
+                <h3 class="producto-titulo">${producto.titulo}</h3>
+                <p class="producto-precio">$${producto.precio}</p>
+                <button class="producto-agregar" id="${producto.id}">Agregar</button>
+            </div>
+        `;
+
+        contenedorProductos.append(div);
+    })
+
+    actualizarBotonesAgregar();
 }
 
-localStorage.setItem("usuario", JSON.stringify(persona1));
 
-let datosUsuario2 = localStorage.getItem("usuario")
+botonesCategorias.forEach(boton => {
+    boton.addEventListener("click", (e) => {
 
-const datosUsuario = JSON.parse(localStorage.getItem("usuario"));
+        botonesCategorias.forEach(boton => boton.classList.remove("active"));
+        e.currentTarget.classList.add("active");
 
-function datosdelUsuario(){
-    console.log(datosUsuario2)
-}
-
-function saludarPersona(){
-alert("Bienvenido, " + `${nombre2} ${apellido}`);
-};
-
-saludarPersona();
-
-let pelicula;
-
-alert("Bienvenido a WatchMovie");
-
-
-do {
-
-pelicula = parseInt(prompt("Marca la opcion\n\n1. Cartelera\n2. Mostrar peliculas recien en estreno\n3. Mostrar combos disponibles\n4. Ventas ancipadas de estrenos\n5. Para querer alguna sugerencia\n\nPara salir, ingrese 0"));
-
-    switch (pelicula) {
-        case 0:
-            alert("Gracias, Vuelva pronto");
-        break; 
-        case 1:
-            let primeraOpcion = "Cartelera:\n\n-BAD BOYS: HASTA LA MUERTE\n-INTENSAMENTE 2\n-MI VILLANO FAVORITO 4\n-TORNADOS\n-BLACK PINK WORLD TOUR BORN PINK";
-            alert(primeraOpcion);
-        break; 
-        case 2:
-            let segundaOpcion = "Peliculas en estreno:\n\n-LA MATRIARCA\n-UN LUGAR EN SILENCIO: DÍA UNO\n-CLUB CERO\n-DEADPOOL & WOLVERINE\n-El último conjuro";
-            alert(segundaOpcion);
-        break; 
-        case 3:
-            let terceraOpcion = "Combos disponibles:\n\n1. Balde de Pochoclo + 2 cocas grandes ($7500)\n2. 2 Bolsas de Pochoclos + 2 cocas grandes ($7000)\n3. Nachos con queso + 1 coca grande ($4500)\n4. Pizza + 1 coca grande ($5000)\n\nPara sumar pulse ACEPTAR";
-            alert(terceraOpcion);
-            let operacion
-            do {
-                function suma() {
-                    const combo1 = parseInt(prompt("INGRESE EL PRECIO DEL PRIMER COMBO QUE QUIERA SUMAR\n\n1. Balde de Pochoclo + 2 cocas grandes ($7500)\n2. 2 Bolsas de Pochoclos + 2 cocas grandes ($7000)\n3. Nachos con queso + 1 coca grande ($4500)\n4. Pizza + 1 coca grande ($5000)"));
-                    const combo2 = parseInt(prompt("INGRESE EL PRECIO DEL SEGUNDO COMBO QUE QUIERA SUMAR\n\n1. Balde de Pochoclo + 2 cocas grandes ($7500)\n2. 2 Bolsas de Pochoclos + 2 cocas grandes ($7000)\n3. Nachos con queso + 1 coca grande ($4500)\n4. Pizza + 1 coca grande ($5000)"));
-                    let resultado1 = alert("El  resultado es $" + (combo1 + combo2));
-                    };
-            operacion = prompt("Confirme de sumar combos ingresando el numero 5\n\nPara volver al menu principal ingrese 6");
-
-                switch (operacion) {
-                case "6": 
-                    break;
-                case "5":
-                    suma();
-                break;
-                default:
-                    alert("Numero de combo ingresado no es correcto");
-                    break;
+        if (e.currentTarget.id != "todos") {
+            const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id);
+            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+            const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
+            cargarProductos(productosBoton);
+        } else {
+            tituloPrincipal.innerText = "CARTELERA + COMBOS";
+            cargarProductos(productos);
         }
-        } while (operacion !== "6");
-            break; 
-        case 4:
-            let mensajeCuatro = "Proximamente\n\n-Avengers 5\n-Thunderbolts\n-Avatar 3\n-Toy Story 5\n-Tron: Ares";
-            alert(mensajeCuatro);
-        break; 
-        case 5:
-            let mensajeCinco = "Se le informa al usuario que tendra que responder preguntas con si/no para recibir algunas sugerencias de nuestra cartelera";
-            alert(mensajeCinco);
-            do {
-                Pregunta1 = parseInt(prompt("¿Te gustan las peliculas de comedia?\n\n1. Si\n2. No\n\n0. Para volver al menu principal"))
 
-
-                switch (Pregunta1) {
-                    case 1:
-                        const primeraSugerencia = ["DEADPOOL & WOLVERINE", "BAD BOYS: HASTA LA MUERTE", "La matriarca"];
-                        primeraSugerencia.forEach((peliculascomedia) => alert(persona1.nombre + " " + persona1.apellido + ", " + "te recomendamos:" + " -" + peliculascomedia));
-                    break;
-                    case 2:
-                        do {
-                            Pregunta2 = parseInt(prompt("¿Te gustan las peliculas de terror?\n\n1. Si\n2. No\n\n0. Para volver atras"))
-
-
-                            switch (Pregunta2) {
-                                case 1:
-                                    const segundaSugerencia = ["UN LUGAR EN SILENCIO: DIA UNO", "El último conjuro"];
-                                    segundaSugerencia.forEach((peliculasterror) => alert(persona1.nombre + " " + persona1.apellido + " " + "te recomendamos:" + " -" + peliculasterror));
-                                break;
-                                case 2:
-                                    do {    
-                                        Pregunta3 = parseInt(prompt("¿Te gustan las peliculas animadas?\n\n1. Si\n2. No\n\n0. Para volver atras"))
-
-
-                                        const terceraSugerencia = ["INTENSAMENTE 2", "MI VILLANO FAVORITO 4"];
-                                        Pregunta3 == 0 ? alert("Volviste atras") : Pregunta3; 
-                                        Pregunta3 == 1 ? terceraSugerencia.forEach((peliculasanimadas) => alert(persona1.nombre + " " + persona1.apellido + " " + "te recomendamos:" + " -" + peliculasanimadas)) :
-                                        Pregunta3; 
-                                        Pregunta3 == 2 ? alert("Perdon no tenemos lo que buscas. :(") : Pregunta3;
-                                        Pregunta3 >= 3 ? alert("opcion invalida. Ingresa una opcion valida") : Pregunta3;
-                                        }
-                                    while (Pregunta1 !==0, Pregunta2 !==0, Pregunta3 !==0);
-                                break;
-                                case 0:
-                                    alert("Volviste atras");
-                                break; 
-                                default:
-                                    alert("opcion invalida. Ingresa una opcion valida")
-                                break;
-                            } 
-                        }
-                        while (Pregunta1 !==0, Pregunta2 !==0);
-                    break;
-                    case 0:
-                        alert("Volviste al menu principal");
-                    break; 
-                    default:
-                        alert("opcion invalida. Ingresa una opcion valida")
-                    break;
-                }
-            } while (Pregunta1 !==0);
-        break; 
-        default:
-            alert("opcion invalida. Ingresa una opcion valida")
-        break;
-    
-    }
-}
-while(pelicula !==0);
-
-const titulo = document.getElementById("titulo");
-
-titulo.innerText = "Bienvenido," + " " + nombre2 + " " + apellido;
-
-const boton = document.createElement("button");
-boton.innerText = "Volver al menu principal";
-
-boton.addEventListener("click", function(){
-alert("Volviste al menu principal")
-const nombre = prompt("Ingresá tu nombre");
-const apellido = prompt("Ingresá tu apellido");
-
-
-const persona1 = {
-    nombre: nombre2,
-    apellido: apellido,
-}
-
-localStorage.setItem("usuario", JSON.stringify(persona1));
-
-let datosUsuario2 = localStorage.getItem("usuario")
-
-const datosUsuario = JSON.parse(localStorage.getItem("usuario"));
-
-function datosdelUsuario(){
-    console.log(datosUsuario2)
-}
-
-function saludarPersona(){
-alert("Bienvenido, " + `${nombre2} ${apellido}`);
-};
-
-saludarPersona();
-
-let pelicula;
-
-alert("Bienvenido a WatchMovie");
-
-
-do {
-
-pelicula = parseInt(prompt("Marca la opcion\n\n1. Cartelera\n2. Mostrar peliculas recien en estreno\n3. Mostrar combos disponibles\n4. Ventas ancipadas de estrenos\n5. Para querer alguna sugerencia\n\nPara salir, ingrese 0"));
-
-    switch (pelicula) {
-        case 0:
-            alert("Gracias, Vuelva pronto");
-        break; 
-        case 1:
-            let primeraOpcion = "Cartelera:\n\n-BAD BOYS: HASTA LA MUERTE\n-INTENSAMENTE 2\n-MI VILLANO FAVORITO 4\n-TORNADOS\n-BLACK PINK WORLD TOUR BORN PINK";
-            alert(primeraOpcion);
-        break; 
-        case 2:
-            let segundaOpcion = "Peliculas en estreno:\n\n-LA MATRIARCA\n-UN LUGAR EN SILENCIO: DÍA UNO\n-CLUB CERO\n-DEADPOOL & WOLVERINE\n-El último conjuro";
-            alert(segundaOpcion);
-        break; 
-        case 3:
-            let terceraOpcion = "Combos disponibles:\n\n1. Balde de Pochoclo + 2 cocas grandes ($7500)\n2. 2 Bolsas de Pochoclos + 2 cocas grandes ($7000)\n3. Nachos con queso + 1 coca grande ($4500)\n4. Pizza + 1 coca grande ($5000)\n\nPara sumar pulse ACEPTAR";
-            alert(terceraOpcion);
-            let operacion
-            do {
-                function suma() {
-                    const combo1 = parseInt(prompt("INGRESE EL PRECIO DEL PRIMER COMBO QUE QUIERA SUMAR\n\n1. Balde de Pochoclo + 2 cocas grandes ($7500)\n2. 2 Bolsas de Pochoclos + 2 cocas grandes ($7000)\n3. Nachos con queso + 1 coca grande ($4500)\n4. Pizza + 1 coca grande ($5000)"));
-                    const combo2 = parseInt(prompt("INGRESE EL PRECIO DEL SEGUNDO COMBO QUE QUIERA SUMAR\n\n1. Balde de Pochoclo + 2 cocas grandes ($7500)\n2. 2 Bolsas de Pochoclos + 2 cocas grandes ($7000)\n3. Nachos con queso + 1 coca grande ($4500)\n4. Pizza + 1 coca grande ($5000)"));
-                    let resultado1 = alert("El  resultado es $" + (combo1 + combo2));
-                    };
-            operacion = prompt("Confirme de sumar combos ingresando el numero 5\n\nPara volver al menu principal ingrese 6");
-
-                switch (operacion) {
-                case "6": 
-                    break;
-                case "5":
-                    suma();
-                break;
-                default:
-                    alert("Numero de combo ingresado no es correcto");
-                    break;
-        }
-        } while (operacion !== "6");
-            break; 
-        case 4:
-            let mensajeCuatro = "Proximamente\n\n-Avengers 5\n-Thunderbolts\n-Avatar 3\n-Toy Story 5\n-Tron: Ares";
-            alert(mensajeCuatro);
-        break; 
-        case 5:
-            let mensajeCinco = "Se le informa al usuario que tendra que responder preguntas con si/no para recibir algunas sugerencias de nuestra cartelera";
-            alert(mensajeCinco);
-            do {
-                Pregunta1 = parseInt(prompt("¿Te gustan las peliculas de comedia?\n\n1. Si\n2. No\n\n0. Para volver al menu principal"))
-
-
-                switch (Pregunta1) {
-                    case 1:
-                        const primeraSugerencia = ["DEADPOOL & WOLVERINE", "BAD BOYS: HASTA LA MUERTE", "La matriarca"];
-                        primeraSugerencia.forEach((peliculascomedia) => alert(persona1.nombre + " " + persona1.apellido + ", " + "te recomendamos:" + " -" + peliculascomedia));
-                    break;
-                    case 2:
-                        do {
-                            Pregunta2 = parseInt(prompt("¿Te gustan las peliculas de terror?\n\n1. Si\n2. No\n\n0. Para volver atras"))
-
-
-                            switch (Pregunta2) {
-                                case 1:
-                                    const segundaSugerencia = ["UN LUGAR EN SILENCIO: DIA UNO", "El último conjuro"];
-                                    segundaSugerencia.forEach((peliculasterror) => alert(persona1.nombre + " " + persona1.apellido + " " + "te recomendamos:" + " -" + peliculasterror));
-                                break;
-                                case 2:
-                                    do {    
-                                        Pregunta3 = parseInt(prompt("¿Te gustan las peliculas animadas?\n\n1. Si\n2. No\n\n0. Para volver atras"))
-
-
-                                        const terceraSugerencia = ["INTENSAMENTE 2", "MI VILLANO FAVORITO 4"];
-                                        Pregunta3 == 0 ? alert("Volviste atras") : Pregunta3; 
-                                        Pregunta3 == 1 ? terceraSugerencia.forEach((peliculasanimadas) => alert(persona1.nombre + " " + persona1.apellido + " " + "te recomendamos:" + " -" + peliculasanimadas)) :
-                                        Pregunta3; 
-                                        Pregunta3 == 2 ? alert("Perdon no tenemos lo que buscas. :(") : Pregunta3;
-                                        Pregunta3 >= 3 ? alert("opcion invalida. Ingresa una opcion valida") : Pregunta3;
-                                        }
-                                    while (Pregunta1 !==0, Pregunta2 !==0, Pregunta3 !==0);
-                                break;
-                                case 0:
-                                    alert("Volviste atras");
-                                break; 
-                                default:
-                                    alert("opcion invalida. Ingresa una opcion valida")
-                                break;
-                            } 
-                        }
-                        while (Pregunta1 !==0, Pregunta2 !==0);
-                    break;
-                    case 0:
-                        alert("Volviste al menu principal");
-                    break; 
-                    default:
-                        alert("opcion invalida. Ingresa una opcion valida")
-                    break;
-                }
-            } while (Pregunta1 !==0);
-        break; 
-        default:
-            alert("opcion invalida. Ingresa una opcion valida")
-        break;
-    
-    }
-}
-while(pelicula !==0);
-
+    })
 });
 
-document.body.append(boton);
+function actualizarBotonesAgregar() {
+    botonesAgregar = document.querySelectorAll(".producto-agregar");
+
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarAlCarrito);
+    });
+}
+
+let productosEnCarrito;
+
+let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+
+if (productosEnCarritoLS) {
+    productosEnCarrito = JSON.parse(productosEnCarritoLS);
+    actualizarNumerito();
+} else {
+    productosEnCarrito = [];
+}
+
+function agregarAlCarrito(e) {
+
+    Toastify({
+        text: "Producto agregado",
+        duration: 3000,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+        background: "linear-gradient(to right, #4b33a8, #785ce9)",
+        borderRadius: "2rem",
+        textTransform: "uppercase",
+        fontSize: ".75rem"
+        },
+        offset: {
+            x: '1.5rem',
+            y: '1.5rem' 
+        },
+        onClick: function(){}
+    }).showToast();
+
+    const idBoton = e.currentTarget.id;
+    const productoAgregado = productos.find(producto => producto.id === idBoton);
+
+    if(productosEnCarrito.some(producto => producto.id === idBoton)) {
+        const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+        productosEnCarrito[index].cantidad++;
+    } else {
+        productoAgregado.cantidad = 1;
+        productosEnCarrito.push(productoAgregado);
+    }
+
+    actualizarNumerito();
+
+    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+}
+
+function actualizarNumerito() {
+    let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    numerito.innerText = nuevoNumerito;
+}

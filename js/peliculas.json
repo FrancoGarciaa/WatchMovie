@@ -1,0 +1,182 @@
+[
+    {
+        "id": "estreno-01",
+        "titulo": "Tornados",
+        "imagen": "./assets/01.jpg",
+        "categoria": {
+            "nombre": "Estreno",
+            "id": "estrenos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "estreno-02",
+        "titulo": "Bad Boys 2",
+        "imagen": "./assets/02.jpg",
+        "categoria": {
+            "nombre": "Estreno",
+            "id": "estrenos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "estreno-03",
+        "titulo": "Deadpool 3",
+        "imagen": "./assets/03.jpeg",
+        "categoria": {
+            "nombre": "Estreno",
+            "id": "estrenos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "estreno-04",
+        "titulo": "Mi villano favarito 4",
+        "imagen": "./assets/04.jpeg",
+        "categoria": {
+            "nombre": "Estreno",
+            "id": "estrenos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "estreno-05",
+        "titulo": "Intensamente 2",
+        "imagen": "./assets/05.jpeg",
+        "categoria": {
+            "nombre": "Estreno",
+            "id": "estrenos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "preeventa-01",
+        "titulo": "Toy Story 5",
+        "imagen": "./assets/preeventa1.jpeg",
+        "categoria": {
+            "nombre": "Preeventa",
+            "id": "preeventas"
+        },
+        "precio": 9000
+    },
+    {
+        "id": "preeventa-02",
+        "titulo": "SONIC 3",
+        "imagen": "./assets/preeventa2.jpeg",
+        "categoria": {
+            "nombre": "Preeventa",
+            "id": "preeventas"
+        },
+        "precio": 9000
+    },
+    {
+        "id": "preeventa-03",
+        "titulo": "Borderlands",
+        "imagen": "./assets/preeventa3.jpeg",
+        "categoria": {
+            "nombre": "Preeventa",
+            "id": "preeventas"
+        },
+        "precio": 9000
+    },
+    {
+        "id": "preeventa-04",
+        "titulo": "Shrek 5",
+        "imagen": "./assets/preeventa4.jpeg",
+        "categoria": {
+            "nombre": "Preeventa",
+            "id": "preeventas"
+        },
+        "precio": 9000
+    },
+    {
+        "id": "preeventa-05",
+        "titulo": "El maravilloso mago de 0z",
+        "imagen": "./assets/preeventa5.jpeg",
+        "categoria": {
+            "nombre": "Preeventa",
+            "id": "preeventas"
+        },
+        "precio": 9000
+    },
+    {
+        "id": "preeventa-06",
+        "titulo": "Alien Romulus",
+        "imagen": "./assets/preeventa6.jpeg",
+        "categoria": {
+            "nombre": "Preeventa",
+            "id": "preeventas"
+        },
+        "precio": 9000
+    },
+    {
+        "id": "preeventa-07",
+        "titulo": "Beetlejuice 2",
+        "imagen": "./assets/preeventa7.jpeg",
+        "categoria": {
+            "nombre": "Preeventa",
+            "id": "preeventas"
+        },
+        "precio": 9000
+    },
+    {
+        "id": "preeventa-08",
+        "titulo": "CROW",
+        "imagen": "./assets/preeventa8.jpeg",
+        "categoria": {
+            "nombre": "Preeventa",
+            "id": "preeventas"
+        },
+        "precio": 9000
+    },
+    {
+        "id": "combo-01",
+        "titulo": "COMBO FAMILIAR",
+        "imagen": "./assets/combo1.jpeg",
+        "categoria": {
+            "nombre": "Combos disponibles",
+            "id": "combos"
+        },
+        "precio": 8000
+    },
+    {
+        "id": "combo-02",
+        "titulo": "COMBO NACHOS",
+        "imagen": "./assets/combo2.jpeg",
+        "categoria": {
+            "nombre": "Combos disponibles",
+            "id": "combos"
+        },
+        "precio": 4000
+    },
+    {
+        "id": "combo-03",
+        "titulo": "COMBO PIZZETA",
+        "imagen": "./assets/combo3.jpeg",
+        "categoria": {
+            "nombre": "Combos disponibles",
+            "id": "combos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "combo-04",
+        "titulo": "COMBO SOLO",
+        "imagen": "./assets/combo4.jpeg",
+        "categoria": {
+            "nombre": "Combos disponibles",
+            "id": "combos"
+        },
+        "precio": 5000
+    },
+    {
+        "id": "combo-05",
+        "titulo": "COMBO FAN DE DEADPOOL",
+        "imagen": "./assets/combo5.jpeg",
+        "categoria": {
+            "nombre": "Combos disponibles",
+            "id": "combos"
+        },
+        "precio": 10000
+    }
+]
