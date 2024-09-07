@@ -40,8 +40,8 @@ if (entrar) {
     Swal.fire({
         title: "Bienvenido" + " " + datosUsuario.nickname,
         text: "a WatchCity.",
-        imageUrl: "https://scontent.faep27-1.fna.fbcdn.net/v/t39.30808-6/293488158_5565352283485696_9017649600538333149_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=K5M5qJVm7LwQ7kNvgFQlWpV&_nc_ht=scontent.faep27-1.fna&oh=00_AYDyDQvNG4cIa1hwBClSmtOUVfObExHVxZmArK50oNLyVg&oe=66D9E505",
-        imageWidth: 400,
+        imageUrl: "./assets/meme.jpg",
+        imageWidth: 350,
         imageHeight: 200,
         imageAlt: "Custom image",
         confirmButtonText: "Verificar", 
