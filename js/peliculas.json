@@ -178,5 +178,35 @@
             "id": "combos"
         },
         "precio": 10000
+    },
+    {
+        "id": "sugerencia-01",
+        "titulo": "COMBO FAN DE DEADPOOL",
+        "imagen": "./assets/combo5.jpeg",
+        "categoria": {
+            "nombre": "Sugerencias",
+            "id": "sugerencia"
+        },
+        "precio": 10000
+    },
+    {
+        "id": "sugerencia-01",
+        "titulo": "COMBO FAN DE DEADPOOL",
+        "imagen": "./assets/combo5.jpeg",
+        "categoria": {
+            "nombre": "Sugerencias",
+            "id": "sugerencia"
+        },
+        "precio": 10000
+    },
+    {
+        "id": "sugerencia-01",
+        "titulo": "COMBO FAN DE DEADPOOL",
+        "imagen": "./assets/combo5.jpeg",
+        "categoria": {
+            "nombre": "Sugerencias",
+            "id": "sugerencia"
+        },
+        "precio": 10000
     }
 ]

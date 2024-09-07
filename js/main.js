@@ -1,43 +1,43 @@
-let productos = [];
+let peliculas = [];
 
 fetch("./js/peliculas.json")
     .then(response => response.json())
     .then(data => {
-        productos = data;
-        cargarProductos(productos);
+        peliculas = data;
+        cargarpeliculas(peliculas);
     })
 
 
-const contenedorProductos = document.querySelector("#contenedor-productos");
+const contenedorpeliculas = document.querySelector("#contenedor-peliculas");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
 const tituloPrincipal = document.querySelector("#titulo-principal");
-let botonesAgregar = document.querySelectorAll(".producto-agregar");
-const numerito = document.querySelector("#numerito");
+let botonesAgregar = document.querySelectorAll(".pelicula-agregar");
+const numeroCantidad = document.querySelector("#numeroCantidad");
 
 
 botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
-    aside.classList.remove("aside-visible");
+    header.classList.remove("header-visible");
 }))
 
 
-function cargarProductos(productosElegidos) {
+function cargarpeliculas(peliculasElegidos) {
 
-    contenedorProductos.innerHTML = "";
+    contenedorpeliculas.innerHTML = "";
 
-    productosElegidos.forEach(producto => {
+    peliculasElegidos.forEach(pelicula => {
 
         const div = document.createElement("div");
-        div.classList.add("producto");
+        div.classList.add("pelicula");
         div.innerHTML = `
-            <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
-            <div class="producto-detalles">
-                <h3 class="producto-titulo">${producto.titulo}</h3>
-                <p class="producto-precio">$${producto.precio}</p>
-                <button class="producto-agregar" id="${producto.id}">Agregar</button>
+            <img class="pelicula-imagen" src="${pelicula.imagen}" alt="${pelicula.titulo}">
+            <div class="pelicula-detalles">
+                <h3 class="pelicula-titulo">${pelicula.titulo}</h3>
+                <p class="pelicula-precio">$${pelicula.precio}</p>
+                <button class="pelicula-agregar" id="${pelicula.id}">Agregar</button>
             </div>
         `;
 
-        contenedorProductos.append(div);
+        contenedorpeliculas.append(div);
     })
 
     actualizarBotonesAgregar();
@@ -51,76 +51,132 @@ botonesCategorias.forEach(boton => {
         e.currentTarget.classList.add("active");
 
         if (e.currentTarget.id != "todos") {
-            const productoCategoria = productos.find(producto => producto.categoria.id === e.currentTarget.id);
-            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
-            const productosBoton = productos.filter(producto => producto.categoria.id === e.currentTarget.id);
-            cargarProductos(productosBoton);
+            const peliculaCategoria = peliculas.find(pelicula => pelicula.categoria.id === e.currentTarget.id);
+            tituloPrincipal.innerText = peliculaCategoria.categoria.nombre;
+            const peliculasBoton = peliculas.filter(pelicula => pelicula.categoria.id === e.currentTarget.id);
+            cargarpeliculas(peliculasBoton);
+            
         } else {
             tituloPrincipal.innerText = "CARTELERA + COMBOS";
-            cargarProductos(productos);
+            cargarpeliculas(peliculas); 
         }
-
     })
 });
 
 function actualizarBotonesAgregar() {
-    botonesAgregar = document.querySelectorAll(".producto-agregar");
+    botonesAgregar = document.querySelectorAll(".pelicula-agregar");
 
     botonesAgregar.forEach(boton => {
         boton.addEventListener("click", agregarAlCarrito);
     });
 }
 
-let productosEnCarrito;
+let peliculasEnCarrito;
 
-let productosEnCarritoLS = localStorage.getItem("productos-en-carrito");
+let peliculasEnCarritoLS = localStorage.getItem("peliculas-en-carrito");
 
-if (productosEnCarritoLS) {
-    productosEnCarrito = JSON.parse(productosEnCarritoLS);
+if (peliculasEnCarritoLS) {
+    peliculasEnCarrito = JSON.parse(peliculasEnCarritoLS);
     actualizarNumerito();
 } else {
-    productosEnCarrito = [];
+    peliculasEnCarrito = [];
 }
 
 function agregarAlCarrito(e) {
 
-    Toastify({
-        text: "Producto agregado",
-        duration: 3000,
-        close: true,
-        gravity: "top", 
-        position: "right", 
-        stopOnFocus: true, 
-        style: {
-        background: "linear-gradient(to right, #4b33a8, #785ce9)",
-        borderRadius: "2rem",
-        textTransform: "uppercase",
-        fontSize: ".75rem"
-        },
-        offset: {
-            x: '1.5rem',
-            y: '1.5rem' 
-        },
-        onClick: function(){}
-    }).showToast();
+Toastify({
+    text: "Entrada agregada",
+    duration: 3000,
+    close: true,
+    gravity: "top", 
+    position: "right", 
+    stopOnFocus: true, 
+    style: {
+    background: "linear-gradient(to right, #4b33a8, #785ce9)",
+    borderRadius: "2rem",
+    textTransform: "uppercase",
+    fontSize: ".75rem"
+    },
+    offset: {
+        x: '1.5rem',
+        y: '1.5rem' 
+    },
+    onClick: function(){}
+}).showToast();
+// if {
+//     Toastify({
+//         text: "combo agregado",
+//         duration: 3000,
+//         close: true,
+//         gravity: "top", 
+//         position: "right", 
+//         stopOnFocus: true, 
+//         style: {
+//         background: "linear-gradient(to right, #4b33a8, #785ce9)",
+//         borderRadius: "2rem",
+//         textTransform: "uppercase",
+//         fontSize: ".75rem"
+//         },
+//         offset: {
+//             x: '1.5rem',
+//             y: '1.5rem' 
+//         },
+//         onClick: function(){}
+//     }).showToast();
+// } else {
+//     Toastify({
+//         text: "entrada agregada",
+//         duration: 3000,
+//         close: true,
+//         gravity: "top", 
+//         position: "right", 
+//         stopOnFocus: true, 
+//         style: {
+//         background: "linear-gradient(to right, #4b33a8, #785ce9)",
+//         borderRadius: "2rem",
+//         textTransform: "uppercase",
+//         fontSize: ".75rem"
+//         },
+//         offset: {
+//             x: '1.5rem',
+//             y: '1.5rem' 
+//         },
+//         onClick: function(){}
+//     }).showToast();
+// }
 
     const idBoton = e.currentTarget.id;
-    const productoAgregado = productos.find(producto => producto.id === idBoton);
+    const peliculaAgregado = peliculas.find(pelicula => pelicula.id === idBoton);
 
-    if(productosEnCarrito.some(producto => producto.id === idBoton)) {
-        const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
-        productosEnCarrito[index].cantidad++;
+    if(peliculasEnCarrito.some(pelicula => pelicula.id === idBoton)) {
+        const index = peliculasEnCarrito.findIndex(pelicula => pelicula.id === idBoton);
+        peliculasEnCarrito[index].cantidad++;
     } else {
-        productoAgregado.cantidad = 1;
-        productosEnCarrito.push(productoAgregado);
+        peliculaAgregado.cantidad = 1;
+        peliculasEnCarrito.push(peliculaAgregado);
     }
 
     actualizarNumerito();
 
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+    localStorage.setItem("peliculas-en-carrito", JSON.stringify(peliculasEnCarrito));
 }
 
 function actualizarNumerito() {
-    let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
-    numerito.innerText = nuevoNumerito;
+    let nuevoNumerito = peliculasEnCarrito.reduce((acc, pelicula) => acc + pelicula.cantidad, 0);
+    numeroCantidad.innerText = nuevoNumerito;
 }
+
+
+
+// botonesCategorias.forEach(boton => {
+//     boton.addEventListener("click", (e) => {
+
+//         botonesCategorias.forEach(boton => boton.classList.remove("active"));
+//         e.currentTarget.classList.add("active");
+
+//         if (e.currentTarget.id != "sugerencia"){
+//             tituloPrincipal.innerText = "CARTELERA + COMBOS";
+//             cargarpeliculas(peliculas); 
+//         }
+//     })
+// });

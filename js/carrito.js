@@ -1,52 +1,52 @@
-let productosEnCarrito = localStorage.getItem("productos-en-carrito");
-productosEnCarrito = JSON.parse(productosEnCarrito);
+let peliculasEnCarrito = localStorage.getItem("peliculas-en-carrito");
+peliculasEnCarrito = JSON.parse(peliculasEnCarrito);
 
 const contenedorCarritoVacio = document.querySelector("#carrito-vacio");
-const contenedorCarritoProductos = document.querySelector("#carrito-productos");
+const contenedorCarritopeliculas = document.querySelector("#carrito-peliculas");
 const contenedorCarritoAcciones = document.querySelector("#carrito-acciones");
 const contenedorCarritoComprado = document.querySelector("#carrito-comprado");
-let botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
+let botonesEliminar = document.querySelectorAll(".carrito-pelicula-eliminar");
 const botonVaciar = document.querySelector("#carrito-acciones-vaciar");
 const contenedorTotal = document.querySelector("#total");
 const botonComprar = document.querySelector("#carrito-acciones-comprar");
 
 
-function cargarProductosCarrito() {
-    if (productosEnCarrito && productosEnCarrito.length > 0) {
+function cargarpeliculasCarrito() {
+    if (peliculasEnCarrito && peliculasEnCarrito.length > 0) {
 
         contenedorCarritoVacio.classList.add("disabled");
-        contenedorCarritoProductos.classList.remove("disabled");
+        contenedorCarritopeliculas.classList.remove("disabled");
         contenedorCarritoAcciones.classList.remove("disabled");
         contenedorCarritoComprado.classList.add("disabled");
     
-        contenedorCarritoProductos.innerHTML = "";
+        contenedorCarritopeliculas.innerHTML = "";
     
-        productosEnCarrito.forEach(producto => {
+        peliculasEnCarrito.forEach(pelicula => {
     
             const div = document.createElement("div");
-            div.classList.add("carrito-producto");
+            div.classList.add("carrito-pelicula");
             div.innerHTML = `
-                <img class="carrito-producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
-                <div class="carrito-producto-titulo">
+                <img class="carrito-pelicula-imagen" src="${pelicula.imagen}" alt="${pelicula.titulo}">
+                <div class="carrito-pelicula-titulo">
                     <small>Título</small>
-                    <h3>${producto.titulo}</h3>
+                    <h3>${pelicula.titulo}</h3>
                 </div>
-                <div class="carrito-producto-cantidad">
+                <div class="carrito-pelicula-cantidad">
                     <small>Cantidad</small>
-                    <p>${producto.cantidad}</p>
+                    <p>${pelicula.cantidad}</p>
                 </div>
-                <div class="carrito-producto-precio">
+                <div class="carrito-pelicula-precio">
                     <small>Precio</small>
-                    <p>$${producto.precio}</p>
+                    <p>$${pelicula.precio}</p>
                 </div>
-                <div class="carrito-producto-subtotal">
+                <div class="carrito-pelicula-subtotal">
                     <small>Subtotal</small>
-                    <p>$${producto.precio * producto.cantidad}</p>
+                    <p>$${pelicula.precio * pelicula.cantidad}</p>
                 </div>
-                <button class="carrito-producto-eliminar" id="${producto.id}"><i class="bi bi-trash-fill"></i></button>
+                <button class="carrito-pelicula-eliminar" id="${pelicula.id}"><i class="bi bi-trash-fill"></i></button>
             `;
     
-            contenedorCarritoProductos.append(div);
+            contenedorCarritopeliculas.append(div);
         })
     
     actualizarBotonesEliminar();
@@ -54,17 +54,17 @@ function cargarProductosCarrito() {
 	
     } else {
         contenedorCarritoVacio.classList.remove("disabled");
-        contenedorCarritoProductos.classList.add("disabled");
+        contenedorCarritopeliculas.classList.add("disabled");
         contenedorCarritoAcciones.classList.add("disabled");
         contenedorCarritoComprado.classList.add("disabled");
     }
 
 }
 
-cargarProductosCarrito();
+cargarpeliculasCarrito();
 
 function actualizarBotonesEliminar() {
-    botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
+    botonesEliminar = document.querySelectorAll(".carrito-pelicula-eliminar");
 
     botonesEliminar.forEach(boton => {
         boton.addEventListener("click", eliminarDelCarrito);
@@ -73,7 +73,7 @@ function actualizarBotonesEliminar() {
 
 function eliminarDelCarrito(e) {
     Toastify({
-        text: "Producto eliminado",
+        text: "pelicula eliminada",
         duration: 3000,
         close: true,
         gravity: "top", 
@@ -93,12 +93,12 @@ function eliminarDelCarrito(e) {
     }).showToast();
 
     const idBoton = e.currentTarget.id;
-    const index = productosEnCarrito.findIndex(producto => producto.id === idBoton);
+    const index = peliculasEnCarrito.findIndex(pelicula => pelicula.id === idBoton);
     
-    productosEnCarrito.splice(index, 1);
-    cargarProductosCarrito();
+    peliculasEnCarrito.splice(index, 1);
+    cargarpeliculasCarrito();
 
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+    localStorage.setItem("peliculas-en-carrito", JSON.stringify(peliculasEnCarrito));
 
 }
 
@@ -107,35 +107,38 @@ function vaciarCarrito() {
 
     Swal.fire({
         title: '¿Estás seguro?',
-        icon: 'question',
-        html: `Se van a borrar ${productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0)} productos.`,
+        imageUrl: "./assets/meme1.jpeg",
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: "Custom image",
+        html: `Se van a borrar ${peliculasEnCarrito.reduce((acc, pelicula) => acc + pelicula.cantidad, 0)} peliculas.`,
         showCancelButton: true,
         focusConfirm: false,
         confirmButtonText: 'Sí',
         cancelButtonText: 'No'
     }).then((result) => {
         if (result.isConfirmed) {
-            productosEnCarrito.length = 0;
-            localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-            cargarProductosCarrito();
+            peliculasEnCarrito.length = 0;
+            localStorage.setItem("peliculas-en-carrito", JSON.stringify(peliculasEnCarrito));
+            cargarpeliculasCarrito();
         }
     })
 }
 
 
 function actualizarTotal() {
-    const totalCalculado = productosEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
+    const totalCalculado = peliculasEnCarrito.reduce((acc, pelicula) => acc + (pelicula.precio * pelicula.cantidad), 0);
     total.innerText = `$${totalCalculado}`;
 }
 
 botonComprar.addEventListener("click", comprarCarrito);
 function comprarCarrito() {
 
-    productosEnCarrito.length = 0;
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+    peliculasEnCarrito.length = 0;
+    localStorage.setItem("peliculas-en-carrito", JSON.stringify(peliculasEnCarrito));
     
     contenedorCarritoVacio.classList.add("disabled");
-    contenedorCarritoProductos.classList.add("disabled");
+    contenedorCarritopeliculas.classList.add("disabled");
     contenedorCarritoAcciones.classList.add("disabled");
     contenedorCarritoComprado.classList.remove("disabled");
 
