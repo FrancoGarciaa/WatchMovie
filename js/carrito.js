@@ -73,7 +73,7 @@ function actualizarBotonesEliminar() {
 
 function eliminarDelCarrito(e) {
     Toastify({
-        text: "pelicula eliminada",
+        text: "pelicula o combo eliminado",
         duration: 3000,
         close: true,
         gravity: "top", 
@@ -111,7 +111,7 @@ function vaciarCarrito() {
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Custom image",
-        html: `Se van a borrar ${peliculasEnCarrito.reduce((acc, pelicula) => acc + pelicula.cantidad, 0)} peliculas.`,
+        html: `Se van a borrar ${peliculasEnCarrito.reduce((acc, pelicula) => acc + pelicula.cantidad, 0)} peliculas o combos.`,
         showCancelButton: true,
         focusConfirm: false,
         confirmButtonText: 'Sí',
