@@ -45,7 +45,7 @@ if (entrar) {
         imageHeight: 200,
         imageAlt: "Custom image",
         confirmButtonText: "Verificar", 
-        footer: '<a href="index.html">ENTRAR</a>'
+        footer: '<a href="index2.html">ENTRAR</a>'
     });
 }
 })
