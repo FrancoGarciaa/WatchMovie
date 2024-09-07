@@ -16,6 +16,8 @@
     font-family: 'Rubik', sans-serif;
 }
 
+
+
 h1, h2, h3, h4, h5, h6, p, a, input, textarea, ul {
     margin: 0;
     padding: 0;
@@ -120,22 +122,21 @@ header {
 
 main {
     background-color: white;
-    margin: 1rem;
-    margin-left: 0;
+    margin: 2rem;
     border-radius: 2rem;
     padding: 3rem;
 }
 
 
 .titulo-principal {
-    color: var(--colorfondo);
+    color: #352a35;
     margin-bottom: 2rem;
 }
 
 .contenedor-peliculas {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 5.2rem;
+    gap: 8.5rem;
 }
 
 .pelicula-imagen {
@@ -145,7 +146,7 @@ main {
 }
 
 .pelicula-detalles {
-    background-color: #352a35;
+    background-color: #000000;
     color: white;
     padding: .8rem;
     margin-top: -0.5rem;
@@ -162,7 +163,7 @@ main {
 .pelicula-agregar {
     border: 0;
     background-color: white;
-    color: #352a35;;
+    color: #352a35;
     padding: .4rem;
     text-transform: uppercase;
     border-radius: 2rem;
@@ -179,13 +180,13 @@ main {
 
 .lugar3{
     position: relative;
-    right: 650px;
+    right: 670px;
     font-size: 20px;
     top: 25px;
 }
 .lugar4{
     position: relative;
-    font-size: 22px;
+    font-size: 18px;
     bottom: 30px;
 }
 
@@ -197,7 +198,7 @@ main {
 
 .carrito-vacio,
 .carrito-comprado {
-    color: #352a35;;
+    color: #352a35;
 }
 
 .carrito-peliculas {
@@ -210,7 +211,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #352a35;;
+    background-color: #352a35;
     color: white;
     padding: .5rem;
     padding-right: 1.5rem;
@@ -240,7 +241,7 @@ main {
 
 .carrito-acciones-vaciar {
     border: 0;
-    background-color: #352a35;;
+    background-color: #352a35;
     padding: 1rem;
     border-radius: 1rem;
     color: white;;
@@ -254,7 +255,7 @@ main {
 
 .carrito-acciones-total {
     display: flex;
-    background-color: #352a35;;
+    background-color: #352a35;
     padding: 1rem;
     color: white;;
     text-transform: uppercase;
@@ -265,7 +266,7 @@ main {
 
 .carrito-acciones-comprar {
     border: 0;
-    background-color: #352a35;;
+    background-color: #352a35;
     padding: 1rem;
     color: white;
     text-transform: uppercase;
@@ -287,7 +288,7 @@ main {
 }
 
 footer{
-    background: #493a49;
+    background: #816581;
     display: flex;
     justify-content: center;
     align-items: center;

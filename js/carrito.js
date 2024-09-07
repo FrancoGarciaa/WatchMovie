@@ -133,7 +133,15 @@ function actualizarTotal() {
 
 botonComprar.addEventListener("click", comprarCarrito);
 function comprarCarrito() {
-
+    Swal.fire({
+        title: "Gracias",
+        text: "Por tu compra",
+        imageUrl: "./assets/meme3.jpeg",
+        imageWidth: 350,
+        imageHeight: 200,
+        imageAlt: "Custom image",
+        confirmButtonText: "Denada", 
+    });
     peliculasEnCarrito.length = 0;
     localStorage.setItem("peliculas-en-carrito", JSON.stringify(peliculasEnCarrito));
     

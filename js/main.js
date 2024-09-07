@@ -166,17 +166,3 @@ function actualizarNumerito() {
     numeroCantidad.innerText = nuevoNumerito;
 }
 
-
-
-// botonesCategorias.forEach(boton => {
-//     boton.addEventListener("click", (e) => {
-
-//         botonesCategorias.forEach(boton => boton.classList.remove("active"));
-//         e.currentTarget.classList.add("active");
-
-//         if (e.currentTarget.id != "sugerencia"){
-//             tituloPrincipal.innerText = "CARTELERA + COMBOS";
-//             cargarpeliculas(peliculas); 
-//         }
-//     })
-// });
