@@ -12,7 +12,7 @@
     {
         "id": "estreno-02",
         "titulo": "Bad Boys 2",
-        "imagen": "./assets/02.jpg",
+        "imagen": "./assets/02.jpeg",
         "categoria": {
             "nombre": "Estreno",
             "id": "estrenos"
@@ -43,6 +43,56 @@
         "id": "estreno-05",
         "titulo": "Intensamente 2",
         "imagen": "./assets/05.jpeg",
+        "categoria": {
+            "nombre": "Estreno",
+            "id": "estrenos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "estreno-06",
+        "titulo": "Guason 2",
+        "imagen": "./assets/06.jpeg",
+        "categoria": {
+            "nombre": "Estreno",
+            "id": "estrenos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "estreno-07",
+        "titulo": "Kill",
+        "imagen": "./assets/07.jpeg",
+        "categoria": {
+            "nombre": "Estreno",
+            "id": "estrenos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "estreno-08",
+        "titulo": "Mascota en apuros",
+        "imagen": "./assets/08.jpeg",
+        "categoria": {
+            "nombre": "Estreno",
+            "id": "estrenos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "estreno-09",
+        "titulo": "Una jirafa en el balcon",
+        "imagen": "./assets/09.jpeg",
+        "categoria": {
+            "nombre": "Estreno",
+            "id": "estrenos"
+        },
+        "precio": 6500
+    },
+    {
+        "id": "estreno-10",
+        "titulo": "Transformers",
+        "imagen": "./assets/10.jpeg",
         "categoria": {
             "nombre": "Estreno",
             "id": "estrenos"
@@ -130,6 +180,26 @@
         "precio": 9000
     },
     {
+        "id": "preeventa-09",
+        "titulo": "Jurassic World",
+        "imagen": "./assets/preeventa9.jpeg",
+        "categoria": {
+            "nombre": "Preeventa",
+            "id": "preeventas"
+        },
+        "precio": 9000
+    },
+    {
+        "id": "preeventa-10",
+        "titulo": "Avatar 3",
+        "imagen": "./assets/preeventa10.jpeg",
+        "categoria": {
+            "nombre": "Preeventa",
+            "id": "preeventas"
+        },
+        "precio": 9000
+    },
+    {
         "id": "combo-01",
         "titulo": "COMBO FAMILIAR",
         "imagen": "./assets/combo1.jpeg",
@@ -173,6 +243,56 @@
         "id": "combo-05",
         "titulo": "COMBO FAN DE DEADPOOL",
         "imagen": "./assets/combo5.jpeg",
+        "categoria": {
+            "nombre": "Combos disponibles",
+            "id": "combos"
+        },
+        "precio": 10000
+    },
+    {
+        "id": "combo-06",
+        "titulo": "COMBO INTENSAMENTE 2",
+        "imagen": "./assets/combo6.jpeg",
+        "categoria": {
+            "nombre": "Combos disponibles",
+            "id": "combos"
+        },
+        "precio": 10000
+    },
+    {
+        "id": "combo-07",
+        "titulo": "COMBO HAMBURGUESA",
+        "imagen": "./assets/combo7.jpeg",
+        "categoria": {
+            "nombre": "Combos disponibles",
+            "id": "combos"
+        },
+        "precio": 10000
+    },
+    {
+        "id": "combo-08",
+        "titulo": "COMBO PANCHO",
+        "imagen": "./assets/combo8.jpeg",
+        "categoria": {
+            "nombre": "Combos disponibles",
+            "id": "combos"
+        },
+        "precio": 10000
+    },
+    {
+        "id": "combo-09",
+        "titulo": "COMBO DULCE",
+        "imagen": "./assets/combo9.jpeg",
+        "categoria": {
+            "nombre": "Combos disponibles",
+            "id": "combos"
+        },
+        "precio": 10000
+    },
+    {
+        "id": "combo-10",
+        "titulo": "MEGA COMBO PARA 2",
+        "imagen": "./assets/combo10.jpeg",
         "categoria": {
             "nombre": "Combos disponibles",
             "id": "combos"
