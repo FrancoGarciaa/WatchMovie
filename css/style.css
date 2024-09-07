@@ -90,7 +90,7 @@ header {
     width: 100%;
 }
 
-.boton-menu.active {
+/* .boton-menu.active {
     background-color: white;
     color: var(--colorfondo);
     border-top-left-radius: 2rem;
@@ -129,7 +129,7 @@ header {
 
 .boton-carrito {
     margin-top: 5rem;
-}
+} */
 
 .numeroCantidad {
     background-color: white;
@@ -206,7 +206,6 @@ main {
 }
 
 
-/** CARRITO **/
 
 .contenedor-carrito {
     display: flex;
