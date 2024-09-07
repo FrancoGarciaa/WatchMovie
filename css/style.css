@@ -53,6 +53,17 @@ a {
     gap: .7rem;
 }
 
+.lugar{
+position: relative;
+right: 180px;
+top: 20px;
+}
+.lugar2{
+    position: relative;
+    right: 50px;
+    top: 20px;
+}
+
 /* .container {
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -63,7 +74,6 @@ header {
     padding: 1rem;
     padding-right: 0rem;
     color: white;
-    position: sticky;
     top: 0;
     display: flex;
     flex-direction: row;
@@ -90,49 +100,9 @@ header {
     width: 100%;
 }
 
-/* .boton-menu.active {
-    background-color: white;
-    color: var(--colorfondo);
-    border-top-left-radius: 2rem;
-    border-bottom-left-radius: 1rem;
-    position: relative;
-}
-
-.boton-menu.active::before {
-    content: '';
-    position: absolute;
-    width: 1rem;
-    height: 2rem;
-    bottom: 100%;
-    right: 0;
-    background-color: transparent;
-    border-bottom-right-radius: .5rem;
-    box-shadow: 0 1rem 0 white;
-}
-
-.boton-menu.active::after {
-    content: '';
-    position: absolute;
-    width: 1rem;
-    height: 2rem;
-    top: 100%;
-    right: 0;
-    background-color: transparent;
-    border-top-right-radius: .5rem;
-    box-shadow: 0 -1rem 0 white;
-}
-
-.boton-menu > i.bi-hand-index-thumb-fill,
-.boton-menu > i.bi-hand-index-thumb {
-    transform: rotateZ(90deg);
-}
-
-.boton-carrito {
-    margin-top: 5rem;
-} */
 
 .numeroCantidad {
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     color: var(--colorfondo);
     padding: .15rem .25rem;
     border-radius: .25rem;
@@ -156,6 +126,7 @@ main {
     padding: 3rem;
 }
 
+
 .titulo-principal {
     color: var(--colorfondo);
     margin-bottom: 2rem;
@@ -174,7 +145,7 @@ main {
 }
 
 .pelicula-detalles {
-    background-color: #352a35;;
+    background-color: #352a35;
     color: white;
     padding: .8rem;
     margin-top: -0.5rem;
@@ -206,6 +177,17 @@ main {
 }
 
 
+.lugar3{
+    position: relative;
+    right: 650px;
+    font-size: 20px;
+    top: 25px;
+}
+.lugar4{
+    position: relative;
+    font-size: 22px;
+    bottom: 30px;
+}
 
 .contenedor-carrito {
     display: flex;
@@ -215,7 +197,7 @@ main {
 
 .carrito-vacio,
 .carrito-comprado {
-    color: var(--colorfondo);
+    color: #352a35;;
 }
 
 .carrito-peliculas {
@@ -228,8 +210,8 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--clr-gris);
-    color: var(--colorfondo);
+    background-color: #352a35;;
+    color: white;
     padding: .5rem;
     padding-right: 1.5rem;
     border-radius: 1rem;
@@ -247,7 +229,7 @@ main {
 .carrito-pelicula-eliminar {
     border: 0;
     background-color: transparent;
-    color: var(--clr-red);
+    color: red;
     cursor: pointer;
 }
 
@@ -258,10 +240,10 @@ main {
 
 .carrito-acciones-vaciar {
     border: 0;
-    background-color: var(--clr-gris);
+    background-color: #352a35;;
     padding: 1rem;
     border-radius: 1rem;
-    color: var(--colorfondo);
+    color: white;;
     text-transform: uppercase;
     cursor: pointer;
 }
@@ -272,9 +254,9 @@ main {
 
 .carrito-acciones-total {
     display: flex;
-    background-color: var(--clr-gris);
+    background-color: #352a35;;
     padding: 1rem;
-    color: var(--colorfondo);
+    color: white;;
     text-transform: uppercase;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -283,9 +265,9 @@ main {
 
 .carrito-acciones-comprar {
     border: 0;
-    background-color: var(--colorfondo);
+    background-color: #352a35;;
     padding: 1rem;
-    color: var(--clr-blanco);
+    color: white;
     text-transform: uppercase;
     cursor: pointer;
     border-top-right-radius: 1rem;
@@ -302,4 +284,11 @@ main {
 
 .disabled {
     display: none;
+}
+
+footer{
+    background: #493a49;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
