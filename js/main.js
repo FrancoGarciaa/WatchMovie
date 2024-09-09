@@ -21,24 +21,23 @@ botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
 
 
 function cargarpeliculas(peliculasElegidos) {
-
     contenedorpeliculas.innerHTML = "";
 
     peliculasElegidos.forEach(pelicula => {
+        if (pelicula.categoria.id !== 'sugerencia') {  
+            const div = document.createElement("div");
+            div.classList.add("pelicula");
+            div.innerHTML = 
+                `<img class="pelicula-imagen" src="${pelicula.imagen}" alt="${pelicula.titulo}">
+                <div class="pelicula-detalles">
+                    <h3 class="pelicula-titulo">${pelicula.titulo}</h3>
+                    <p class="pelicula-precio">$${pelicula.precio}</p>
+                    <button class="pelicula-agregar" id="${pelicula.id}">Agregar</button>
+                </div>`;
 
-        const div = document.createElement("div");
-        div.classList.add("pelicula");
-        div.innerHTML = `
-            <img class="pelicula-imagen" src="${pelicula.imagen}" alt="${pelicula.titulo}">
-            <div class="pelicula-detalles">
-                <h3 class="pelicula-titulo">${pelicula.titulo}</h3>
-                <p class="pelicula-precio">$${pelicula.precio}</p>
-                <button class="pelicula-agregar" id="${pelicula.id}">Agregar</button>
-            </div>
-        `;
-
-        contenedorpeliculas.append(div);
-    })
+            contenedorpeliculas.append(div);
+        }
+    });
 
     actualizarBotonesAgregar();
 }
@@ -46,21 +45,19 @@ function cargarpeliculas(peliculasElegidos) {
 
 botonesCategorias.forEach(boton => {
     boton.addEventListener("click", (e) => {
-
         botonesCategorias.forEach(boton => boton.classList.remove("active"));
         e.currentTarget.classList.add("active");
 
-        if (e.currentTarget.id != "todos") {
-            const peliculaCategoria = peliculas.find(pelicula => pelicula.categoria.id === e.currentTarget.id);
-            tituloPrincipal.innerText = peliculaCategoria.categoria.nombre;
-            const peliculasBoton = peliculas.filter(pelicula => pelicula.categoria.id === e.currentTarget.id);
-            cargarpeliculas(peliculasBoton);
-            
+        if (e.currentTarget.id !== "todos") {
+            const peliculasCategoria = peliculas.filter(pelicula => pelicula.categoria.id === e.currentTarget.id);
+            tituloPrincipal.innerText = e.currentTarget.innerText;
+            cargarpeliculas(peliculasCategoria);
         } else {
-            tituloPrincipal.innerText = "CARTELERA + COMBOS";
-            cargarpeliculas(peliculas); 
+            tituloPrincipal.innerText = "CARTELERA";
+            const peliculasSinCombos = peliculas.filter(pelicula => pelicula.categoria.id !== "combos");
+            cargarpeliculas(peliculasSinCombos);
         }
-    })
+    });
 });
 
 function actualizarBotonesAgregar() {
@@ -83,77 +80,46 @@ if (peliculasEnCarritoLS) {
 }
 
 function agregarAlCarrito(e) {
-
-Toastify({
-    text: "Entrada agregada",
-    duration: 3000,
-    close: true,
-    gravity: "top", 
-    position: "right", 
-    stopOnFocus: true, 
-    style: {
-    background: "linear-gradient(to right, #4b33a8, #785ce9)",
-    borderRadius: "2rem",
-    textTransform: "uppercase",
-    fontSize: ".75rem"
-    },
-    offset: {
-        x: '1.5rem',
-        y: '1.5rem' 
-    },
-    onClick: function(){}
-}).showToast();
-// if {
-//     Toastify({
-//         text: "combo agregado",
-//         duration: 3000,
-//         close: true,
-//         gravity: "top", 
-//         position: "right", 
-//         stopOnFocus: true, 
-//         style: {
-//         background: "linear-gradient(to right, #4b33a8, #785ce9)",
-//         borderRadius: "2rem",
-//         textTransform: "uppercase",
-//         fontSize: ".75rem"
-//         },
-//         offset: {
-//             x: '1.5rem',
-//             y: '1.5rem' 
-//         },
-//         onClick: function(){}
-//     }).showToast();
-// } else {
-//     Toastify({
-//         text: "entrada agregada",
-//         duration: 3000,
-//         close: true,
-//         gravity: "top", 
-//         position: "right", 
-//         stopOnFocus: true, 
-//         style: {
-//         background: "linear-gradient(to right, #4b33a8, #785ce9)",
-//         borderRadius: "2rem",
-//         textTransform: "uppercase",
-//         fontSize: ".75rem"
-//         },
-//         offset: {
-//             x: '1.5rem',
-//             y: '1.5rem' 
-//         },
-//         onClick: function(){}
-//     }).showToast();
-// }
-
     const idBoton = e.currentTarget.id;
-    const peliculaAgregado = peliculas.find(pelicula => pelicula.id === idBoton);
+    const peliculaAgregada = peliculas.find(pelicula => pelicula.id === idBoton);
+    
+    let mensajeToast;
+    if (peliculaAgregada.id.startsWith('combo')) {
+        mensajeToast = "Agregar combo";
+    } else if (peliculaAgregada.id.startsWith('estreno')) {
+        mensajeToast = "Agregar entrada de estrenos";
+    } else if (peliculaAgregada.id.startsWith('preeventa')) {
+        mensajeToast = "Agregar entrada de preestreno";
+    } else {
+        mensajeToast = "Agregar item";
+    }
 
-    if(peliculasEnCarrito.some(pelicula => pelicula.id === idBoton)) {
+    Toastify({
+        text: mensajeToast,
+        duration: 3000,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right, #352a35, #352a35)",
+            borderRadius: "2rem",
+            textTransform: "uppercase",
+            fontSize: ".75rem"
+        },
+        offset: {
+            x: '1.5rem',
+            y: '1.5rem'
+        },
+        onClick: function(){}
+    }).showToast();
+
+    if (peliculasEnCarrito.some(pelicula => pelicula.id === idBoton)) {
         const index = peliculasEnCarrito.findIndex(pelicula => pelicula.id === idBoton);
         peliculasEnCarrito[index].cantidad++;
     } else {
-        peliculaAgregado.cantidad = 1;
-        peliculasEnCarrito.push(peliculaAgregado);
+        peliculaAgregada.cantidad = 1;
+        peliculasEnCarrito.push(peliculaAgregada);
     }
 
     actualizarNumerito();

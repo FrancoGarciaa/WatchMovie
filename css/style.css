@@ -184,7 +184,7 @@ main {
 }
 
 .circles{
-    border: rgb(20, 9, 9) 2px solid;
+    border: rgb(0, 0, 0) 2px solid;
     width: 25px;
     height: 25px;
     display: inline-block;
@@ -194,7 +194,7 @@ main {
 }
 
 .resaltado{
-    background-color: rgb(156, 106, 40);
+    background-color: rgb(255, 255, 255);
     transition: background-color .8s;
 }
 
@@ -349,8 +349,9 @@ main {
     background-color: #352a35;
     color: rgb(255, 255, 255);
     justify-content: center;
-    align-items: center;s
+    align-items: center;
 }
+
 .imagenfinal{
     background-color: #352a35;
     display: flex;

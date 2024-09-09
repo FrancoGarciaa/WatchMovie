@@ -104,6 +104,17 @@ function eliminarDelCarrito(e) {
 
 botonVaciar.addEventListener("click", vaciarCarrito);
 function vaciarCarrito() {
+    const conteoCategorias = peliculasEnCarrito.reduce((acc, pelicula) => {
+        const categoriaNombre = pelicula.categoria.nombre;
+        acc[categoriaNombre] = (acc[categoriaNombre] || 0) + pelicula.cantidad;
+        return acc;
+    }, {});
+
+    let mensaje = 'Se van a borrar: ';
+    for (const [categoria, cantidad] of Object.entries(conteoCategorias)) {
+        mensaje += `${cantidad} ${categoria}, `;
+    }
+    mensaje = mensaje.slice(0, -2) + '.'; 
 
     Swal.fire({
         title: '¿Estás seguro?',
@@ -111,7 +122,7 @@ function vaciarCarrito() {
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Custom image",
-        html: `Se van a borrar ${peliculasEnCarrito.reduce((acc, pelicula) => acc + pelicula.cantidad, 0)} peliculas o combos.`,
+        html: `${mensaje}`,
         showCancelButton: true,
         focusConfirm: false,
         confirmButtonText: 'Sí',
@@ -121,8 +132,27 @@ function vaciarCarrito() {
             peliculasEnCarrito.length = 0;
             localStorage.setItem("peliculas-en-carrito", JSON.stringify(peliculasEnCarrito));
             cargarpeliculasCarrito();
+            
+            Toastify({
+                text: `Carrito vacío.`,
+                duration: 3000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: "linear-gradient(to right, #4b33a8, #785ce9)",
+                    borderRadius: "2rem",
+                    textTransform: "uppercase",
+                    fontSize: ".75rem"
+                },
+                offset: {
+                    x: '1.5rem',
+                    y: '1.5rem'
+                }
+            }).showToast();
         }
-    })
+    });
 }
 
 
@@ -152,49 +182,49 @@ function comprarCarrito() {
 
 }
 
-addEventListener('DOMContentLoaded', () => {
+// addEventListener('DOMContentLoaded', () => {
 
-    const imagenes = ['assets/publicidad1.jpeg', 'assets/publicidad2.jpeg', 'assets/publicidad3.jpeg' ,'assets/publicidad4.jpeg',
-                    'assets/publicidad5.jpeg', 'assets/publicidad6.jpeg', 'assets/publicidad7.jpeg', 'assets/publicidad8.jpeg', 'assets/publicidad9.jpeg', 'assets/publicidad10.jpeg']
-    let i = 1
-    const img1 = document.querySelector('#img1')
-    const img2 = document.querySelector('#img2')
-    const progressBar = document.querySelector('#progress-bar')
-    const divIndicadores = document.querySelector('#indicadores')
-    let porcentaje_base = 100/imagenes.length
-    let porcentaje_actual = porcentaje_base
+//     const imagenes = ['assets/publicidad1.jpeg', 'assets/publicidad2.jpeg', 'assets/publicidad3.jpeg' ,'assets/publicidad4.jpeg',
+//                     'assets/publicidad5.jpeg', 'assets/publicidad6.jpeg', 'assets/publicidad7.jpeg', 'assets/publicidad8.jpeg', 'assets/publicidad9.jpeg', 'assets/publicidad10.jpeg']
+//     let i = 1
+//     const img1 = document.querySelector('#img1')
+//     const img2 = document.querySelector('#img2')
+//     const progressBar = document.querySelector('#progress-bar')
+//     const divIndicadores = document.querySelector('#indicadores')
+//     let porcentaje_base = 100/imagenes.length
+//     let porcentaje_actual = porcentaje_base
 
-    for (let index = 0; index < imagenes.length; index++) {
-        const div = document.createElement('div')
-        div.classList.add('circles')
-        div.id = index
-        divIndicadores.appendChild(div)
-    }
+//     for (let index = 0; index < imagenes.length; index++) {
+//         const div = document.createElement('div')
+//         div.classList.add('circles')
+//         div.id = index
+//         divIndicadores.appendChild(div)
+//     }
 
-    progressBar.style.width = `${porcentaje_base}%`
-    img1.src = imagenes[0]
-    const circulos = document.querySelectorAll('.circles')
-    circulos[0].classList.add('resaltado')
+//     progressBar.style.width = `${porcentaje_base}%`
+//     img1.src = imagenes[0]
+//     const circulos = document.querySelectorAll('.circles')
+//     circulos[0].classList.add('resaltado')
 
-    const slideshow = () => {
-        img2.src = imagenes[i]
-        const circulo_actual = Array.from(circulos).find(el => el.id == i)
-        Array.from(circulos).forEach(cir => cir.classList.remove('resaltado'))
-        circulo_actual.classList.add('resaltado')
+//     const slideshow = () => {
+//         img2.src = imagenes[i]
+//         const circulo_actual = Array.from(circulos).find(el => el.id == i)
+//         Array.from(circulos).forEach(cir => cir.classList.remove('resaltado'))
+//         circulo_actual.classList.add('resaltado')
 
-        img2.classList.add('active')
-        i++
-        porcentaje_actual+=porcentaje_base
-        progressBar.style.width = `${porcentaje_actual}%`
-        if (i == imagenes.length) {
-            i = 0
-            porcentaje_actual = porcentaje_base - porcentaje_base
-        }
+//         img2.classList.add('active')
+//         i++
+//         porcentaje_actual+=porcentaje_base
+//         progressBar.style.width = `${porcentaje_actual}%`
+//         if (i == imagenes.length) {
+//             i = 0
+//             porcentaje_actual = porcentaje_base - porcentaje_base
+//         }
 
-        setTimeout(() => {
-            img1.src = img2.src
-            img2.classList.remove('active')
-        }, 1000)
-    }
-    setInterval(slideshow, 4000)
-})
+//         setTimeout(() => {
+//             img1.src = img2.src
+//             img2.classList.remove('active')
+//         }, 1000)
+//     }
+//     setInterval(slideshow, 4000)
+// })

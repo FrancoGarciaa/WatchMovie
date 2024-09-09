@@ -4,7 +4,7 @@
         "titulo": "Tornados",
         "imagen": "./assets/01.jpg",
         "categoria": {
-            "nombre": "Estreno",
+            "nombre": "Estrenos",
             "id": "estrenos"
         },
         "precio": 6500
@@ -14,7 +14,7 @@
         "titulo": "Bad Boys 2",
         "imagen": "./assets/02.jpeg",
         "categoria": {
-            "nombre": "Estreno",
+            "nombre": "Estrenos",
             "id": "estrenos"
         },
         "precio": 6500
@@ -24,7 +24,7 @@
         "titulo": "Deadpool 3",
         "imagen": "./assets/03.jpeg",
         "categoria": {
-            "nombre": "Estreno",
+            "nombre": "Estrenos",
             "id": "estrenos"
         },
         "precio": 6500
@@ -34,7 +34,7 @@
         "titulo": "Mi villano favarito 4",
         "imagen": "./assets/04.jpeg",
         "categoria": {
-            "nombre": "Estreno",
+            "nombre": "Estrenos",
             "id": "estrenos"
         },
         "precio": 6500
@@ -44,7 +44,7 @@
         "titulo": "Intensamente 2",
         "imagen": "./assets/05.jpeg",
         "categoria": {
-            "nombre": "Estreno",
+            "nombre": "Estrenos",
             "id": "estrenos"
         },
         "precio": 6500
@@ -54,7 +54,7 @@
         "titulo": "Guason 2",
         "imagen": "./assets/06.jpeg",
         "categoria": {
-            "nombre": "Estreno",
+            "nombre": "Estrenos",
             "id": "estrenos"
         },
         "precio": 6500
@@ -64,7 +64,7 @@
         "titulo": "Kill",
         "imagen": "./assets/07.jpeg",
         "categoria": {
-            "nombre": "Estreno",
+            "nombre": "Estrenos",
             "id": "estrenos"
         },
         "precio": 6500
@@ -74,7 +74,7 @@
         "titulo": "Mascota en apuros",
         "imagen": "./assets/08.jpeg",
         "categoria": {
-            "nombre": "Estreno",
+            "nombre": "Estrenos",
             "id": "estrenos"
         },
         "precio": 6500
@@ -84,7 +84,7 @@
         "titulo": "Una jirafa en el balcon",
         "imagen": "./assets/09.jpeg",
         "categoria": {
-            "nombre": "Estreno",
+            "nombre": "Estrenos",
             "id": "estrenos"
         },
         "precio": 6500
@@ -94,7 +94,7 @@
         "titulo": "Transformers",
         "imagen": "./assets/10.jpeg",
         "categoria": {
-            "nombre": "Estreno",
+            "nombre": "Estrenos",
             "id": "estrenos"
         },
         "precio": 6500
@@ -104,7 +104,7 @@
         "titulo": "Toy Story 5",
         "imagen": "./assets/preeventa1.jpeg",
         "categoria": {
-            "nombre": "Preeventa",
+            "nombre": "Preeventas",
             "id": "preeventas"
         },
         "precio": 9000
@@ -114,7 +114,7 @@
         "titulo": "SONIC 3",
         "imagen": "./assets/preeventa2.jpeg",
         "categoria": {
-            "nombre": "Preeventa",
+            "nombre": "Preeventas",
             "id": "preeventas"
         },
         "precio": 9000
@@ -124,7 +124,7 @@
         "titulo": "Borderlands",
         "imagen": "./assets/preeventa3.jpeg",
         "categoria": {
-            "nombre": "Preeventa",
+            "nombre": "Preeventas",
             "id": "preeventas"
         },
         "precio": 9000
@@ -134,7 +134,7 @@
         "titulo": "Shrek 5",
         "imagen": "./assets/preeventa4.jpeg",
         "categoria": {
-            "nombre": "Preeventa",
+            "nombre": "Preeventas",
             "id": "preeventas"
         },
         "precio": 9000
@@ -144,7 +144,7 @@
         "titulo": "El maravilloso mago de 0z",
         "imagen": "./assets/preeventa5.jpeg",
         "categoria": {
-            "nombre": "Preeventa",
+            "nombre": "Preeventas",
             "id": "preeventas"
         },
         "precio": 9000
@@ -154,7 +154,7 @@
         "titulo": "Alien Romulus",
         "imagen": "./assets/preeventa6.jpeg",
         "categoria": {
-            "nombre": "Preeventa",
+            "nombre": "Preeventas",
             "id": "preeventas"
         },
         "precio": 9000
@@ -164,7 +164,7 @@
         "titulo": "Beetlejuice 2",
         "imagen": "./assets/preeventa7.jpeg",
         "categoria": {
-            "nombre": "Preeventa",
+            "nombre": "Preeventas",
             "id": "preeventas"
         },
         "precio": 9000
@@ -174,7 +174,7 @@
         "titulo": "CROW",
         "imagen": "./assets/preeventa8.jpeg",
         "categoria": {
-            "nombre": "Preeventa",
+            "nombre": "Preeventas",
             "id": "preeventas"
         },
         "precio": 9000
@@ -184,7 +184,7 @@
         "titulo": "Jurassic World",
         "imagen": "./assets/preeventa9.jpeg",
         "categoria": {
-            "nombre": "Preeventa",
+            "nombre": "Preeventas",
             "id": "preeventas"
         },
         "precio": 9000
@@ -194,7 +194,7 @@
         "titulo": "Avatar 3",
         "imagen": "./assets/preeventa10.jpeg",
         "categoria": {
-            "nombre": "Preeventa",
+            "nombre": "Preeventas",
             "id": "preeventas"
         },
         "precio": 9000
@@ -267,7 +267,7 @@
             "nombre": "Combos disponibles",
             "id": "combos"
         },
-        "precio": 10000
+        "precio": 7500
     },
     {
         "id": "combo-08",
@@ -277,7 +277,7 @@
             "nombre": "Combos disponibles",
             "id": "combos"
         },
-        "precio": 10000
+        "precio": 9000
     },
     {
         "id": "combo-09",
@@ -287,7 +287,7 @@
             "nombre": "Combos disponibles",
             "id": "combos"
         },
-        "precio": 10000
+        "precio": 7000
     },
     {
         "id": "combo-10",
@@ -297,36 +297,6 @@
             "nombre": "Combos disponibles",
             "id": "combos"
         },
-        "precio": 10000
-    },
-    {
-        "id": "sugerencia-01",
-        "titulo": "COMBO FAN DE DEADPOOL",
-        "imagen": "./assets/combo5.jpeg",
-        "categoria": {
-            "nombre": "Sugerencias",
-            "id": "sugerencia"
-        },
-        "precio": 10000
-    },
-    {
-        "id": "sugerencia-01",
-        "titulo": "COMBO FAN DE DEADPOOL",
-        "imagen": "./assets/combo5.jpeg",
-        "categoria": {
-            "nombre": "Sugerencias",
-            "id": "sugerencia"
-        },
-        "precio": 10000
-    },
-    {
-        "id": "sugerencia-01",
-        "titulo": "COMBO FAN DE DEADPOOL",
-        "imagen": "./assets/combo5.jpeg",
-        "categoria": {
-            "nombre": "Sugerencias",
-            "id": "sugerencia"
-        },
-        "precio": 10000
+        "precio": 12000
     }
 ]
