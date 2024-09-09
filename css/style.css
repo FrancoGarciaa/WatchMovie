@@ -250,7 +250,7 @@ main {
 
 .lugar3{
     position: relative;
-    right: 670px;
+    right: 700px;
     font-size: 20px;
     top: 25px;
 }
@@ -358,9 +358,6 @@ main {
     justify-content: center;
 }
 
-.header-mobile {
-    display: none;
-}
 
 .close-menu {
     display: none;

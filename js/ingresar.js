@@ -26,7 +26,7 @@ if (entrar) {
 } else {
     Swal.fire({
         title: "Bienvenido" + " " + datosUsuario.nickname,
-        text: "a WatchCity.",
+        text: "a WatchMovie.",
         imageUrl: "./assets/meme.jpg",
         imageWidth: 350,
         imageHeight: 200,
