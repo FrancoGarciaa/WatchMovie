@@ -277,7 +277,7 @@
             "nombre": "Combos disponibles",
             "id": "combos"
         },
-        "precio": 9000
+        "precio": 4500
     },
     {
         "id": "combo-09",
@@ -298,5 +298,35 @@
             "id": "combos"
         },
         "precio": 12000
+    },
+    {
+        "id": "sugerecia-01",
+        "titulo": "Bad Boys 2",
+        "imagen": "./assets/02.jpeg",
+        "categoria": {
+            "nombre": "Sugerencias",
+            "id": "sugerencias"
+        },
+        "precio": 5000
+    },
+    {
+        "id": "sugerecia-02",
+        "titulo": "Deadpool 3",
+        "imagen": "./assets/03.jpeg",
+        "categoria": {
+            "nombre": "Sugerencias",
+            "id": "sugerencias"
+        },
+        "precio": 5000
+    },
+    {
+        "id": "sugerecia-03",
+        "titulo": "Intensamente 2",
+        "imagen": "./assets/05.jpeg",
+        "categoria": {
+            "nombre": "Sugerencias",
+            "id": "sugerencias"
+        },
+        "precio": 5000
     }
 ]

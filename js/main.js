@@ -1,5 +1,12 @@
 let peliculas = [];
 
+
+const contenedorpeliculas = document.querySelector("#contenedor-peliculas");
+const botonesCategorias = document.querySelectorAll(".boton-categoria");
+const tituloPrincipal = document.querySelector("#titulo-principal");
+let botonesAgregar = document.querySelectorAll(".pelicula-agregar");
+const numeroCantidad = document.querySelector("#numeroCantidad");
+
 fetch("./js/peliculas.json")
     .then(response => response.json())
     .then(data => {
@@ -7,12 +14,6 @@ fetch("./js/peliculas.json")
         cargarpeliculas(peliculas);
     })
 
-
-const contenedorpeliculas = document.querySelector("#contenedor-peliculas");
-const botonesCategorias = document.querySelectorAll(".boton-categoria");
-const tituloPrincipal = document.querySelector("#titulo-principal");
-let botonesAgregar = document.querySelectorAll(".pelicula-agregar");
-const numeroCantidad = document.querySelector("#numeroCantidad");
 
 
 botonesCategorias.forEach(boton => boton.addEventListener("click", () => {
@@ -47,7 +48,6 @@ botonesCategorias.forEach(boton => {
     boton.addEventListener("click", (e) => {
         botonesCategorias.forEach(boton => boton.classList.remove("active"));
         e.currentTarget.classList.add("active");
-
         if (e.currentTarget.id !== "todos") {
             const peliculasCategoria = peliculas.filter(pelicula => pelicula.categoria.id === e.currentTarget.id);
             tituloPrincipal.innerText = e.currentTarget.innerText;
@@ -91,7 +91,7 @@ function agregarAlCarrito(e) {
     } else if (peliculaAgregada.id.startsWith('preeventa')) {
         mensajeToast = "Agregar entrada de preestreno";
     } else {
-        mensajeToast = "Agregar item";
+        mensajeToast = "Agregar Sugerencia";
     }
 
     Toastify({
@@ -179,4 +179,3 @@ function actualizarNumerito() {
         }
         setInterval(slideshow, 4000)
     })
-
